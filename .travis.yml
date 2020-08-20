@@ -16,10 +16,10 @@ after_success:
 
     - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
 
-    - docker push dockerwebapp/client
-    - docker push dockerwebapp/nginx
-    - docker push dockerwebapp/server
-    - docker push dockerwebapp/worker            
+    - docker push sagarmshukla/dockerwebapp/client
+    - docker push sagarmshukla/dockerwebapp/nginx
+    - docker push sagarmshukla/dockerwebapp/server
+    - docker push sagarmshukla/dockerwebapp/worker            
 
 #deploy:
 #    provider: elasticbeanstalk
