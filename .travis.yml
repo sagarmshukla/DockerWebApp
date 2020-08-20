@@ -4,22 +4,22 @@ services:
     - docker
     
 before_install:
-    - docker build -t dockerwebapp/frontend -f ./client/Dockerfile.dev ./client
+    - docker build -t sagarmshukla/frontend -f ./client/Dockerfile.dev ./client
 script:
-    - docker run -e CI=true dockerwebapp/frontend npm run test -- --coverage
+    - docker run -e CI=true sagarmshukla/frontend npm run test -- --coverage
 
 after_success:
-    - docker build -t dockerwebapp/client ./client
-    - docker build -t dockerwebapp/nginx ./nginx       
-    - docker build -t dockerwebapp/server ./server 
-    - docker build -t dockerwebapp/worker ./worker 
+    - docker build -t sagarmshukla/client ./client
+    - docker build -t sagarmshukla/nginx ./nginx       
+    - docker build -t sagarmshukla/server ./server 
+    - docker build -t sagarmshukla/worker ./worker 
 
     - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
 
-    - docker push sagarmshukla/dockerwebapp/client
-    - docker push sagarmshukla/dockerwebapp/nginx
-    - docker push sagarmshukla/dockerwebapp/server
-    - docker push sagarmshukla/dockerwebapp/worker            
+    - docker push sagarmshukla/client
+    - docker push sagarmshukla/nginx
+    - docker push sagarmshukla/server
+    - docker push sagarmshukla/worker            
 
 #deploy:
 #    provider: elasticbeanstalk
